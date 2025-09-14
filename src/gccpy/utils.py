@@ -4,6 +4,18 @@ import os
 
 from .exceptions import ExtentionStructureNotValid
 
+import yaml
+
+
+def load_gccpy_config_file() -> dict:
+    """Loads the config file `gccpy.yaml`."""
+    path = Path(__file__).resolve().parent / "gccpy.yaml"
+
+    try:
+        with open(path, 'r') as f:
+            return yaml.safe_load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError("Please make sure you configure `gccpy.yaml` file before running the build.")
 
 def lookup_files(basedir: Path, extention: str) -> list[Path]:
     """Searches for files with a specific extention."""

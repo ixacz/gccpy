@@ -1,0 +1,4 @@
+builds:
+  project:
+    name: yamlc++
+    type: lib
